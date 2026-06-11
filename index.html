@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fake News Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span>TruthCheck</span>
+    </div>
+    <div class="badge">ML Powered</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-eyebrow">NLP · TF-IDF · Logistic Regression</div>
+      <h1>Is it <span class="highlight">Real</span><br>or <span class="highlight-red">Fabricated?</span></h1>
+      <p class="hero-sub">Paste any news headline or article below. The model analyzes language patterns to detect misinformation.</p>
+    </section>
+
+    <section class="detector">
+      <div class="input-wrap">
+        <textarea
+          id="newsInput"
+          placeholder="Paste a news headline or article text here..."
+          rows="6"
+        ></textarea>
+        <div class="input-meta">
+          <span id="charCount">0 characters</span>
+          <button id="clearBtn" onclick="clearInput()">Clear</button>
+        </div>
+      </div>
+
+      <button id="analyzeBtn" onclick="analyze()">
+        <span id="btnText">Analyze</span>
+        <span id="btnLoader" class="hidden">Analyzing...</span>
+      </button>
+
+      <div id="resultCard" class="result-card hidden">
+        <div class="result-header">
+          <div id="resultLabel" class="result-label"></div>
+          <div id="resultConfidence" class="result-confidence"></div>
+        </div>
+        <div class="prob-bars">
+          <div class="prob-row">
+            <span class="prob-label">Real</span>
+            <div class="bar-wrap">
+              <div id="realBar" class="bar bar-real"></div>
+            </div>
+            <span id="realPct" class="prob-pct">0%</span>
+          </div>
+          <div class="prob-row">
+            <span class="prob-label">Fake</span>
+            <div class="bar-wrap">
+              <div id="fakeBar" class="bar bar-fake"></div>
+            </div>
+            <span id="fakePct" class="prob-pct">0%</span>
+          </div>
+        </div>
+        <p class="result-disclaimer">Model accuracy ~89%. Always verify with trusted sources.</p>
+      </div>
+
+      <div id="errorCard" class="error-card hidden">
+        <span>⚠️</span> <span id="errorMsg"></span>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-text">
+            <strong>Text Cleaning</strong>
+            <p>Removes noise, stopwords, and applies stemming to normalize language.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-text">
+            <strong>TF-IDF Vectorization</strong>
+            <p>Converts text into numerical features based on word importance across documents.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-text">
+            <strong>Classification</strong>
+            <p>Logistic Regression model predicts probability of the news being fake or real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built by <strong>Pushpendra</strong> · B.Tech CSE (AI/ML) · Dronacharya College of Engineering</p>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
